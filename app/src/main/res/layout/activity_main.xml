@@ -16,16 +16,19 @@
             android:id="@+id/text_gramm_alt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ursprüngliche Grammzahl:"
+            android:text="@string/gramm_alt"
             android:layout_weight="1"
-            android:textSize="12dp"
+            android:textSize="12sp"
             android:textAlignment="center"/>
 
         <EditText
             android:id="@+id/word_edit_gramm_alt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,16 +40,19 @@
             android:id="@+id/text_Portionenzahl_alt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ursprüngliche Portionenanzahl:"
             android:layout_weight="1"
-            android:textSize="12dp"
-            android:textAlignment="center"/>
+            android:text="@string/portionen_alt"
+            android:textAlignment="center"
+            android:textSize="12sp" />
 
         <EditText
             android:id="@+id/word_edit_portionen_alt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor"/>
 
     </LinearLayout>
 
@@ -59,16 +65,19 @@
             android:id="@+id/text_Portionenzahl_neu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Geben Sie die gewünschte Portionenanzahl ein1:"
+            android:text="@string/portionen_neu"
             android:layout_weight="1"
-            android:textSize="12dp"
+            android:textSize="12sp"
             android:textAlignment="center"/>
 
         <EditText
             android:id="@+id/word_edit_portionen_neu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:inputType="number"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor"/>
 
     </LinearLayout>
 
@@ -76,6 +85,6 @@
         android:id="@+id/button_berechne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Berechne" />
+        android:text="@string/berechne" />
 
 </LinearLayout>

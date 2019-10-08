@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">PortionenRechnerApp</string>
     <string name="action_settings">Settings</string>
+    <string name="gramm_alt">Ursprüngliche Grammzahl:</string>
+    <string name="portionen_alt">Ursprüngliche Portionenanzahl:</string>
+    <string name="portionen_neu">Geben Sie die gewünschte Portionenanzahl ein1:</string>
+    <string name="berechne">Berechne</string>
 </resources>
