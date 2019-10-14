@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         berechne = findViewById(R.id.button_berechne);
         grammAlt = findViewById(R.id.word_edit_gramm_alt);
-        portionAlt = findViewById(R.id.word_edit_portionen_alt;
+        portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
 
     }
