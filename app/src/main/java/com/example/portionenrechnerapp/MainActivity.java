@@ -9,12 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button berechne;
     EditText grammAlt;
     EditText portionAlt;
     EditText portionNeu;
+    TextView ergView;
     int erg = 0;
 
     @Override
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         grammAlt = findViewById(R.id.word_edit_gramm_alt);
         portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
-
+        ergView = findViewById(R.id.text_berechne);
     }
 
     @Override
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int portionAltInt = Integer.parseInt(portionAlt.getText().toString());
             int portionNeuInt = Integer.parseInt(portionNeu.getText().toString());
             erg = ( grammAltInt / portionAltInt ) * portionNeuInt;
+            ergView.setText(erg);
         }
     }
 }
