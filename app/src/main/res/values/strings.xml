@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">PortionenRechnerApp</string>
     <string name="action_settings">Settings</string>
+    <string name="ursprüngliche_grammzahl">Ursprüngliche Grammzahl:</string>
+    <string name="ursprüngliche_portionenanzahl">Ursprüngliche Portionenanzahl:</string>
+    <string name="eingabe_portionen_neu">Geben Sie die gewünschte Portionenanzahl ein</string>
+    <string name="berechne">Berechne</string>
+    <string name="alte_portionenanzahl_hint"><font size="13">Alte Portionenanzahl</font></string>
+    <string name="ursprüngliche_grammzahl_hint"><font size="13">Ursprüngliche Grammzahl</font></string>
+    <string name="neue_portionenanzahl_hint"><font size="13">Neue Portionenanzahl</font></string>
+
 </resources>
