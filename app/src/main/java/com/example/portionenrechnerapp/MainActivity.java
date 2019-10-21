@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
         ergView = findViewById(R.id.text_berechne);
+        berechne.setOnClickListener(this);
     }
 
     @Override
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int portionAltInt = Integer.parseInt(portionAlt.getText().toString());
             int portionNeuInt = Integer.parseInt(portionNeu.getText().toString());
             erg = ( grammAltInt / portionAltInt ) * portionNeuInt;
-            ergView.setText(erg);
+            String ergString = String.valueOf(erg);
+            ergView.setText(ergString);
         }
     }
 }
