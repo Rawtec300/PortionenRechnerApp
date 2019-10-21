@@ -8,5 +8,7 @@
     <string name="alte_portionenanzahl_hint"><font size="13">Alte Portionenanzahl</font></string>
     <string name="ursprüngliche_grammzahl_hint"><font size="13">Ursprüngliche Grammzahl</font></string>
     <string name="neue_portionenanzahl_hint"><font size="13">Neue Portionenanzahl</font></string>
+    <string name="hilfe">Hilfe</string>
+    <string name="ergebnis">Ergebnis</string>
 
 </resources>
