@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button berechne;
@@ -56,12 +57,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if(view==berechne){
-            int grammAltInt = Integer.parseInt(grammAlt.getText().toString());
-            int portionAltInt = Integer.parseInt(portionAlt.getText().toString());
-            int portionNeuInt = Integer.parseInt(portionNeu.getText().toString());
-            erg = ( grammAltInt / portionAltInt ) * portionNeuInt;
-            String ergString = String.valueOf(erg);
-            ergView.setText(ergString);
+            if( ! (grammAlt.getText().toString().isEmpty() || portionAlt.getText().toString().isEmpty() || portionNeu.getText().toString().isEmpty())) {
+                int grammAltInt = Integer.parseInt(grammAlt.getText().toString());
+                int portionAltInt = Integer.parseInt(portionAlt.getText().toString());
+                int portionNeuInt = Integer.parseInt(portionNeu.getText().toString());
+                erg = (grammAltInt / portionAltInt) * portionNeuInt;
+                String ergString = String.valueOf(erg);
+                ergView.setText(ergString);
+            } else{
+                Toast.makeText(getApplicationContext(),"Hello Javatpoint", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
