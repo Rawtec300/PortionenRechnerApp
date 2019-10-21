@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String ergString = String.valueOf(erg);
                 ergView.setText(ergString);
             } else{
-                Toast.makeText(getApplicationContext(),"Hello Javatpoint", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
         }
     }
