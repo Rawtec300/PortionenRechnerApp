@@ -93,4 +93,10 @@
         android:id="@+id/text_berechne"
         android:text="Ergebnis"/>
 
+    <Button
+        android:id="@+id/button_hilfe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hilfe"/>
+
 </LinearLayout>

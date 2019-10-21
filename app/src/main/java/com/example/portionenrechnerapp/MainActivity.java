@@ -1,5 +1,6 @@
 package com.example.portionenrechnerapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button berechne;
+    Button hilfe;
     EditText grammAlt;
     EditText portionAlt;
     EditText portionNeu;
@@ -25,11 +27,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         berechne = findViewById(R.id.button_berechne);
+        hilfe = findViewById(R.id.button_hilfe);
+
         grammAlt = findViewById(R.id.word_edit_gramm_alt);
         portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
         ergView = findViewById(R.id.text_berechne);
         berechne.setOnClickListener(this);
+        hilfe.setOnClickListener(this);
     }
 
     @Override
@@ -67,6 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else{
                 Toast.makeText(getApplicationContext(),"Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
+        }
+        if(view == hilfe){
+            Intent intent = new Intent(this, Help_page.class);
+            startActivity(intent);
         }
     }
 }
