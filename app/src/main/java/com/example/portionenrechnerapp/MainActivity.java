@@ -72,10 +72,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else{
                 Toast.makeText(getApplicationContext(),"Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
-        }
-        if(view == hilfe){
+        }else if(view == hilfe){
             Intent intent_help_page = new Intent(this, Help_page.class);
             startActivity(intent_help_page);
+        }else{
+            Toast.makeText(getApplicationContext(),"Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
         }
     }
 }
