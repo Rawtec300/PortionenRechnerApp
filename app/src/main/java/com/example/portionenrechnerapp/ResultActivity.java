@@ -13,7 +13,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     TextView portionenNeuBerechne;
     TextView grammNeuBerechne;
     Button zurueck;
-    int erg;
+    double erg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +31,11 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         String portionAltString = bundle.getString("portionen_alt_zu_berechne");
         String grammAltString = bundle.getString("gramm_alt_zu_berechne");
 
-        int grammAltInt = Integer.parseInt(grammAltString);
-        int portionAltInt = Integer.parseInt(portionAltString);
-        int portionNeuInt = Integer.parseInt(portionNeuString);
+        double grammAltDouble = Double.parseDouble(grammAltString);
+        double portionAltDouble = Double.parseDouble(portionAltString);
+        double portionNeuDouble = Double.parseDouble(portionNeuString);
 
-        erg = (grammAltInt / portionAltInt) * portionNeuInt;
+        erg = ( grammAltDouble / portionAltDouble ) * portionNeuDouble;
         String ergString = String.valueOf(erg);
 
         portionenNeuBerechne.setText(portionNeuString);
