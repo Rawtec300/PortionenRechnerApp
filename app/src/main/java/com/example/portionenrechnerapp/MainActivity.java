@@ -1,5 +1,6 @@
 package com.example.portionenrechnerapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,24 +12,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button berechne;
     EditText grammAlt;
     EditText portionAlt;
     EditText portionNeu;
-    TextView ergView;
-    int erg = 0;
+    TextView berechnePortionen;
+    TextView berechneGramm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
         berechne = findViewById(R.id.button_berechne);
         grammAlt = findViewById(R.id.word_edit_gramm_alt);
         portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
-        ergView = findViewById(R.id.text_berechne);
+        berechnePortionen = findViewById(R.id.text_berechne_portionen);
+        berechneGramm = findViewById(R.id.text_berechne_gramm);
         berechne.setOnClickListener(this);
     }
 
@@ -56,16 +60,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view==berechne){
-            if( ! (grammAlt.getText().toString().isEmpty() || portionAlt.getText().toString().isEmpty() || portionNeu.getText().toString().isEmpty())) {
-                int grammAltInt = Integer.parseInt(grammAlt.getText().toString());
-                int portionAltInt = Integer.parseInt(portionAlt.getText().toString());
-                int portionNeuInt = Integer.parseInt(portionNeu.getText().toString());
-                erg = (grammAltInt / portionAltInt) * portionNeuInt;
-                String ergString = String.valueOf(erg);
-                ergView.setText(ergString);
-            } else{
-                Toast.makeText(getApplicationContext(),"Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
+        if (view == berechne) {
+            if (!(grammAlt.getText().toString().isEmpty() ||
+                    portionAlt.getText().toString().isEmpty() ||
+                    portionNeu.getText().toString().isEmpty())) {
+
+                Intent intentBerechne = new Intent(this, ResultActivity.class);
+                intentBerechne.putExtra("portionen_neu_zu_berechne", portionNeu.getText().toString());
+                intentBerechne.putExtra("portionen_alt_zu_berechne", portionAlt.getText().toString());
+                intentBerechne.putExtra("gramm_alt_zu_berechne", grammAlt.getText().toString());
+                startActivity(intentBerechne);
+            } else {
+                Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
         }
     }
