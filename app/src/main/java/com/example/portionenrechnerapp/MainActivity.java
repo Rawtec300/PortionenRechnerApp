@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
         } else if (view == hilfe) {
-            Intent intent_help_page = new Intent(this, Help_page.class);
-            startActivity(intent_help_page);
+            Intent intentHelpPage = new Intent(this, Help_page.class);
+            startActivity(intentHelpPage);
         } else {
             Toast.makeText(getApplicationContext(), "Fehler, bitte neu starten!", Toast.LENGTH_SHORT).show();
         }
