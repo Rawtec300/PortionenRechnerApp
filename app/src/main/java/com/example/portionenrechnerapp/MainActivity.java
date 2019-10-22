@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText grammAlt;
     EditText portionAlt;
     EditText portionNeu;
-    TextView berechnePortionen;
-    TextView berechneGramm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         grammAlt = findViewById(R.id.word_edit_gramm_alt);
         portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
-        berechnePortionen = findViewById(R.id.text_berechne_portionen);
-        berechneGramm = findViewById(R.id.text_berechne_gramm);
         berechne.setOnClickListener(this);
     }
 
