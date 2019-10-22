@@ -57,7 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == berechne) {
-            if (!(grammAlt.getText().toString().isEmpty() ||
+            if (!portionAlt.getText().toString().isEmpty() && Integer.parseInt(portionAlt.getText().toString())==0) {
+                Toast.makeText(getApplicationContext(), "Die alte Portionenanzahl darf nicht 0 sein!", Toast.LENGTH_SHORT).show();
+
+            } else if (!(grammAlt.getText().toString().isEmpty() ||
                     portionAlt.getText().toString().isEmpty() ||
                     portionNeu.getText().toString().isEmpty())) {
 
@@ -67,8 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentBerechne.putExtra("gramm_alt_zu_berechne", grammAlt.getText().toString());
                 startActivity(intentBerechne);
 
-            } else if (Integer.parseInt(portionAlt.getText().toString())==0) {
-                Toast.makeText(getApplicationContext(), "Die alte Portionenanzahl darf nicht 0 sein!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
