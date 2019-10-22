@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button berechne;
@@ -19,20 +20,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText grammAlt;
     EditText portionAlt;
     EditText portionNeu;
-    TextView ergView;
-    int erg = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         berechne = findViewById(R.id.button_berechne);
         hilfe = findViewById(R.id.button_hilfe);
 
         grammAlt = findViewById(R.id.word_edit_gramm_alt);
         portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
-        ergView = findViewById(R.id.text_berechne);
         berechne.setOnClickListener(this);
         hilfe.setOnClickListener(this);
     }
@@ -62,17 +61,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == berechne) {
-            if (!(grammAlt.getText().toString().isEmpty() || portionAlt.getText().toString().isEmpty() || portionNeu.getText().toString().isEmpty())) {
-                int grammAltInt = Integer.parseInt(grammAlt.getText().toString());
-                int portionAltInt = Integer.parseInt(portionAlt.getText().toString());
-                int portionNeuInt = Integer.parseInt(portionNeu.getText().toString());
-                if (portionAltInt == 0) {
-                    Toast.makeText(getApplicationContext(), "Die alte Portionenanzahl darf nicht 0 sein!", Toast.LENGTH_LONG).show();
-                } else {
-                    erg = (grammAltInt / portionAltInt) * portionNeuInt;
-                    String ergString = String.valueOf(erg);
-                    ergView.setText(ergString);
-                }
+            if (!portionAlt.getText().toString().isEmpty() && Integer.parseInt(portionAlt.getText().toString())==0) {
+                Toast.makeText(getApplicationContext(), "Die alte Portionenanzahl darf nicht 0 sein!", Toast.LENGTH_SHORT).show();
+
+            } else if (!(grammAlt.getText().toString().isEmpty() ||
+                    portionAlt.getText().toString().isEmpty() ||
+                    portionNeu.getText().toString().isEmpty())) {
+
+                Intent intentBerechne = new Intent(this, ResultActivity.class);
+                intentBerechne.putExtra("portionen_neu_zu_berechne", portionNeu.getText().toString());
+                intentBerechne.putExtra("portionen_alt_zu_berechne", portionAlt.getText().toString());
+                intentBerechne.putExtra("gramm_alt_zu_berechne", grammAlt.getText().toString());
+                startActivity(intentBerechne);
+
             } else {
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
