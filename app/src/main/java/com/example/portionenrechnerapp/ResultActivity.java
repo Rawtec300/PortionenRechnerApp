@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView portionenNeuBerechne;
-    TextView grammNeuBerechne;
+    TextView ergView;
     Button zurueck;
     double erg;
 
@@ -20,8 +19,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        portionenNeuBerechne = findViewById(R.id.text_berechne_portionen);
-        grammNeuBerechne = findViewById(R.id.text_berechne_gramm);
+        ergView = findViewById(R.id.text_ergebnis);
         zurueck = findViewById(R.id.button_berechne_zurück);
         zurueck.setOnClickListener(this);
 
@@ -35,11 +33,10 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         double portionAltDouble = Double.parseDouble(portionAltString);
         double portionNeuDouble = Double.parseDouble(portionNeuString);
 
-        erg = ( grammAltDouble / portionAltDouble ) * portionNeuDouble;
+        erg = (grammAltDouble / portionAltDouble) * portionNeuDouble;
         String ergString = String.valueOf(erg);
 
-        portionenNeuBerechne.setText(portionNeuString);
-        grammNeuBerechne.setText(ergString);
+        ergView.setText("Sie benötigen für " + portionNeuString + " Portionen " + ergString + " Gramm.");
     }
 
     @Override

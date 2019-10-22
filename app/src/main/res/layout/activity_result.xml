@@ -7,51 +7,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_ergebnis"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="50sp"
+        android:gravity="center"
+        android:text="@string/sie_benoetigen_fuer_x_portionen_x_gramm"
+        android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/text_berechne_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sie benötigen für "
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/text_berechne_portionen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/place_holder_x"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/text_berechne_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Portionen "
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/text_berechne_gramm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/place_holder_x"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/text_berechne_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Gramm."
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/button_berechne_zurück"

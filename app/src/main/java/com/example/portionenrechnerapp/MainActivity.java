@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == berechne) {
-            if (!portionAlt.getText().toString().isEmpty() && Integer.parseInt(portionAlt.getText().toString())==0) {
+            if (!portionAlt.getText().toString().isEmpty() && Integer.parseInt(portionAlt.getText().toString()) == 0) {
                 Toast.makeText(getApplicationContext(), "Die alte Portionenanzahl darf nicht 0 sein!", Toast.LENGTH_SHORT).show();
 
             } else if (!(grammAlt.getText().toString().isEmpty() ||
