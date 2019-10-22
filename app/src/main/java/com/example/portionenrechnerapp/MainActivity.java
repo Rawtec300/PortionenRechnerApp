@@ -61,22 +61,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view==berechne){
-            if( ! (grammAlt.getText().toString().isEmpty() || portionAlt.getText().toString().isEmpty() || portionNeu.getText().toString().isEmpty())) {
+        if (view == berechne) {
+            if (!(grammAlt.getText().toString().isEmpty() || portionAlt.getText().toString().isEmpty() || portionNeu.getText().toString().isEmpty())) {
                 int grammAltInt = Integer.parseInt(grammAlt.getText().toString());
                 int portionAltInt = Integer.parseInt(portionAlt.getText().toString());
                 int portionNeuInt = Integer.parseInt(portionNeu.getText().toString());
-                erg = (grammAltInt / portionAltInt) * portionNeuInt;
-                String ergString = String.valueOf(erg);
-                ergView.setText(ergString);
-            } else{
-                Toast.makeText(getApplicationContext(),"Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
+                if (portionAltInt == 0) {
+                    Toast.makeText(getApplicationContext(), "Die alte Portionenanzahl darf nicht 0 sein!", Toast.LENGTH_LONG).show();
+                } else {
+                    erg = (grammAltInt / portionAltInt) * portionNeuInt;
+                    String ergString = String.valueOf(erg);
+                    ergView.setText(ergString);
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
-        }else if(view == hilfe){
+        } else if (view == hilfe) {
             Intent intent_help_page = new Intent(this, Help_page.class);
             startActivity(intent_help_page);
-        }else{
-            Toast.makeText(getApplicationContext(),"Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Fehler, bitte neu starten!", Toast.LENGTH_SHORT).show();
         }
     }
 }
