@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if(view == hilfe){
-            Intent intent = new Intent(this, Help_page.class);
-            startActivity(intent);
+            Intent intent_help_page = new Intent(this, Help_page.class);
+            startActivity(intent_help_page);
         }
     }
 }

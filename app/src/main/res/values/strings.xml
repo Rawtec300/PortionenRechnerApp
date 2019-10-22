@@ -12,5 +12,7 @@
     <string name="ergebnis">Ergebnis</string>
     <string name="hilfeseite">Hilfeseite</string>
     <string name="zurück">Zurück</string>
+    <string name="Hilfstext">Zweck der App:\nDiese App dient der Umrechnung von Küchenrezepten. Die App rechnet bei angegebener alter Portionenanzahl, alter Menge und der gewünschten Portionenanzahl die neue Menge aus.</string>
+    <string name="Kurzbeschreibung_help_page">Dies ist die Hilfeseite für die Portionenrechner App</string>
 
 </resources>
