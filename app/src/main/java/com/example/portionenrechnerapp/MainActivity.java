@@ -1,6 +1,7 @@
 package com.example.portionenrechnerapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,14 +18,19 @@ import android.widget.ViewSwitcher;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button berechne;
     Button hilfe;
+    Button anzeigen;
     EditText grammAlt;
     EditText portionAlt;
     EditText portionNeu;
+
+    private EintragDao dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dao = EintragDatabase.getDatabase(this).eintragDao();
 
         berechne = findViewById(R.id.button_berechne);
         hilfe = findViewById(R.id.button_hilfe);
@@ -73,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentBerechne.putExtra("portionen_alt_zu_berechne", portionAlt.getText().toString());
                 intentBerechne.putExtra("gramm_alt_zu_berechne", grammAlt.getText().toString());
                 startActivity(intentBerechne);
+                //new SpeichernTask().execute(new Eintrag(grammAlt, portionAlt, portionNeu, grammNeu));
 
             } else {
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
@@ -83,5 +90,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             Toast.makeText(getApplicationContext(), "Fehler, bitte neu starten!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    class SpeichernTask extends AsyncTask<Eintrag, Void, Void>{
+        @Override
+        protected Void doInBackground(Eintrag... eintraege){
+            dao.insert(eintraege[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid){
+            super.onPostExecute(aVoid);
+        }
+
     }
 }
