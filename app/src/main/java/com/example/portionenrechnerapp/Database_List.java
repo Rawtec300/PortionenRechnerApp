@@ -9,7 +9,7 @@ public class Database_List extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_database__list);
+        setContentView(R.layout.activity_database_list);
 
     }
 }
