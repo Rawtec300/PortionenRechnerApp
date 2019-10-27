@@ -103,7 +103,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public EditText getPortionAlt(){
+        return portionAlt;
+    }
 
+    public EditText getPortionNeu(){
+        return portionNeu;
     }
 
 
