@@ -81,8 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentBerechne);
                 ResultActivity temp = new ResultActivity();
                 String grammNeu = temp.getErg();
-                new SpeichernTask().execute(new Eintrag(grammAlt.getText().toString(), portionAlt.getText().toString(),
+                if(!grammNeu.isEmpty()){
+                    new SpeichernTask().execute(new Eintrag(grammAlt.getText().toString(), portionAlt.getText().toString(),
                         portionNeu.getText().toString(), grammNeu));
+                }
 
             } else {
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
