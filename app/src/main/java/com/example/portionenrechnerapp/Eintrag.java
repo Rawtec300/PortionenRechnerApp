@@ -1,6 +1,5 @@
 package com.example.portionenrechnerapp;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -15,11 +14,11 @@ public class Eintrag {
     public String portionenAlt;
     public String portionenNeu;
 
-    public Eintrag(String pGrammAlt, String pPortionenAlt, String pPortionenNeu, String pGrammNeu) {
-        this.grammAlt = pGrammAlt;
-        this.grammNeu = pGrammNeu;
-        this.portionenAlt = pPortionenAlt;
-        this.portionenNeu = pPortionenNeu;
+    public Eintrag(String grammAlt, String portionenAlt, String portionenNeu, String grammNeu) {
+        this.grammAlt = grammAlt;
+        this.grammNeu = grammNeu;
+        this.portionenAlt = portionenAlt;
+        this.portionenNeu = portionenNeu;
     }
 
     public int getId() {
