@@ -16,4 +16,5 @@
     <string name="Hilfstext">Diese App dient der Umrechnung von Küchenrezepten. Die App rechnet bei angegebener alter Portionenanzahl, alter Menge und der gewünschten Portionenanzahl die neue Menge aus.</string>
     <string name="zurueck">Zurück</string>
     <string name="sie_benoetigen_fuer_x_portionen_x_gramm">Sie benötigen für x Portionen x Gramm.</string>
+    <string name="verlauf">Verlauf</string>
 </resources>
