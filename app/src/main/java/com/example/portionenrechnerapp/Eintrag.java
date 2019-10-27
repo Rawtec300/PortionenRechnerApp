@@ -6,9 +6,10 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Eintrag {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
+    //TODO: Strings to double
     public String grammAlt;
     public String grammNeu;
     public String portionenAlt;
@@ -46,9 +47,5 @@ public class Eintrag {
 
     public String getPortionenNeu() {
         return this.portionenAlt;
-    }
-
-    public Eintrag getEintrag(){
-        return this;
     }
 }

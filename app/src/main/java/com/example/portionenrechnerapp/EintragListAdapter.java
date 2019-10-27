@@ -32,7 +32,7 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         TextView eintragView = holder.itemView.findViewById(R.id.list_item_eintrag);
-        eintragView.setText((CharSequence) eintraege.get(position).getEintrag());
+        eintragView.setText((CharSequence) eintraege.get(position));
     }
 
     @Override

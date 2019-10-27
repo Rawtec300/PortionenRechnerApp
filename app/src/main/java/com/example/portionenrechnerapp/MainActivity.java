@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentBerechne);
                 ResultActivity temp = new ResultActivity();
                 String grammNeu = temp.getErg();
+                //TODO: Speichern soll in die ResultActivity durchgeführt werden
                 if(!grammNeu.isEmpty()){
                     new SpeichernTask().execute(new Eintrag(grammAlt.getText().toString(), portionAlt.getText().toString(),
                         portionNeu.getText().toString(), grammNeu));
@@ -97,7 +98,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public EditText getGrammAlt() {
+        return grammAlt;
+    }
+
+    public EditText getPortionAlt(){
+
+    }
+
+
     class SpeichernTask extends AsyncTask<Eintrag, Void, Void> {
+
         @Override
         protected Void doInBackground(Eintrag... eintraege) {
             dao.insert(eintraege[0]);
