@@ -79,7 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentBerechne.putExtra("portionen_alt_zu_berechne", portionAlt.getText().toString());
                 intentBerechne.putExtra("gramm_alt_zu_berechne", grammAlt.getText().toString());
                 startActivity(intentBerechne);
-                //new SpeichernTask().execute(new Eintrag(grammAlt, portionAlt, portionNeu, grammNeu));
+                ResultActivity temp = new ResultActivity();
+                String grammNeu = temp.getErg();
+                new SpeichernTask().execute(new Eintrag(grammAlt.getText().toString(), portionAlt.getText().toString(),
+                        portionNeu.getText().toString(), grammNeu));
 
             } else {
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
@@ -92,15 +95,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    class SpeichernTask extends AsyncTask<Eintrag, Void, Void>{
+    class SpeichernTask extends AsyncTask<Eintrag, Void, Void> {
         @Override
-        protected Void doInBackground(Eintrag... eintraege){
+        protected Void doInBackground(Eintrag... eintraege) {
             dao.insert(eintraege[0]);
             return null;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid){
+        protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
         }
 

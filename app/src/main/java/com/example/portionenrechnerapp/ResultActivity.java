@@ -12,7 +12,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
     TextView ergView;
     Button zurueck;
-    double erg;
+    public double erg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +44,9 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         if (view == zurueck) {
             finish();
         }
+    }
+
+    public String getErg(){
+       return String.valueOf(erg);
     }
 }
