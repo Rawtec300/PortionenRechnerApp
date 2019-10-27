@@ -1,17 +1,25 @@
 package com.example.portionenrechnerapp;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
 public class Eintrag {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-    private final String word;
+    @PrimaryKey
+    public int id;
 
-    public Eintrag(String word) {
-        this.word = word;
+    public String grammAlt;
+    public String grammNeu;
+    public String portionenAlt;
+    public String portionenNeu;
+
+    public Eintrag(String pGrammAlt, String pPortionenAlt, String pPortionenNeu, String pGrammNeu) {
+        this.grammAlt = pGrammAlt;
+        this.grammNeu = pGrammNeu;
+        this.portionenAlt = pPortionenAlt;
+        this.portionenNeu = pPortionenNeu;
     }
 
     public int getId() {
@@ -22,7 +30,22 @@ public class Eintrag {
         this.id = id;
     }
 
-    public String getWord() {
-        return word;
+    public String getGrammAlt() {
+        return this.grammAlt;
+    }
+
+
+    public String getGrammNeu() {
+        return this.grammNeu;
+    }
+
+
+    public String getPortionenAlt() {
+        return this.portionenAlt;
+    }
+
+
+    public String getPortionenNeu() {
+        return this.portionenAlt;
     }
 }

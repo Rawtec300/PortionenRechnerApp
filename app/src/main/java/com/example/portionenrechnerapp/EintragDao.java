@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface EintragDao {
 
-    @Insert(OnConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     public void insert(Eintrag eintrag);
 
     @Query("SELECT * FROM Eintrag")
