@@ -23,14 +23,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText portionAlt;
     EditText portionNeu;
 
-   // private EintragDao dao;
+    // private EintragDao dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       // dao = EintragDatabase.getDatabase(this).eintragDao();
+        // dao = EintragDatabase.getDatabase(this).eintragDao();
 
         berechne = findViewById(R.id.button_berechne);
         hilfe = findViewById(R.id.button_hilfe);
@@ -69,9 +69,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == berechne) {
+            //Prüfen ob alle Textfelder ausgefüllt sind
             if (!portionAlt.getText().toString().isEmpty() && Integer.parseInt(portionAlt.getText().toString()) == 0) {
                 Toast.makeText(getApplicationContext(), "Die alte Portionenanzahl darf nicht 0 sein!", Toast.LENGTH_SHORT).show();
-
+                
             } else if (!(grammAlt.getText().toString().isEmpty() ||
                     portionAlt.getText().toString().isEmpty() ||
                     portionNeu.getText().toString().isEmpty())) {
@@ -82,23 +83,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentBerechne.putExtra("gramm_alt_zu_berechne", grammAlt.getText().toString());
                 startActivity(intentBerechne);
                 ResultActivity temp = new ResultActivity();
-                Double grammNeu = temp.erg;
-              /*  //TODO: Speichern soll in die ResultActivity durchgeführt werden
-
-                    new SpeichernTask().execute(new Eintrag(
-                            Double.parseDouble(grammAlt.getText().toString()),
-                            Double.parseDouble(portionAlt.getText().toString()),
-                            Double.parseDouble(portionNeu.getText().toString()),
-                            grammNeu));
-
-*/
             } else {
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
         } else if (view == hilfe) {
             Intent intentHelpPage = new Intent(this, Help_page.class);
             startActivity(intentHelpPage);
-        }else if(view == anzeigen){
+        } else if (view == anzeigen) {
             Intent intentAnzeigen = new Intent(this, AuflistungActivity.class);
             startActivity(intentAnzeigen);
 
@@ -111,27 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return grammAlt;
     }
 
-    public EditText getPortionAlt(){
+    public EditText getPortionAlt() {
         return portionAlt;
     }
 
-    public EditText getPortionNeu(){
+    public EditText getPortionNeu() {
         return portionNeu;
     }
 
-/*
-    class SpeichernTask extends AsyncTask<Eintrag, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Eintrag... eintraege) {
-            dao.insert(eintraege[0]);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
-
-    } */
 }
