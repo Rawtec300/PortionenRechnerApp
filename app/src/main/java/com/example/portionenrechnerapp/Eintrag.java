@@ -9,13 +9,12 @@ public class Eintrag {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    //TODO: Strings to double
-    public String grammAlt;
-    public String grammNeu;
-    public String portionenAlt;
-    public String portionenNeu;
+    public double grammAlt;
+    public double grammNeu;
+    public double portionenAlt;
+    public double portionenNeu;
 
-    public Eintrag(String grammAlt, String portionenAlt, String portionenNeu, String grammNeu) {
+    public Eintrag(double grammAlt, double portionenAlt, double portionenNeu, double grammNeu) {
         this.grammAlt = grammAlt;
         this.grammNeu = grammNeu;
         this.portionenAlt = portionenAlt;
@@ -30,22 +29,22 @@ public class Eintrag {
         this.id = id;
     }
 
-    public String getGrammAlt() {
+    public double getGrammAlt() {
         return this.grammAlt;
     }
 
 
-    public String getGrammNeu() {
+    public double getGrammNeu() {
         return this.grammNeu;
     }
 
 
-    public String getPortionenAlt() {
+    public double getPortionenAlt() {
         return this.portionenAlt;
     }
 
 
-    public String getPortionenNeu() {
+    public double getPortionenNeu() {
         return this.portionenAlt;
     }
 }

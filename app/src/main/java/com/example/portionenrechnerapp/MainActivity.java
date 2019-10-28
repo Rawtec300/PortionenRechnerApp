@@ -34,12 +34,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         berechne = findViewById(R.id.button_berechne);
         hilfe = findViewById(R.id.button_hilfe);
+        anzeigen = findViewById(R.id.button_anzeigen);
 
         grammAlt = findViewById(R.id.word_edit_gramm_alt);
         portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
         berechne.setOnClickListener(this);
         hilfe.setOnClickListener(this);
+        anzeigen.setOnClickListener(this);
     }
 
     @Override
@@ -80,12 +82,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intentBerechne.putExtra("gramm_alt_zu_berechne", grammAlt.getText().toString());
                 startActivity(intentBerechne);
                 ResultActivity temp = new ResultActivity();
-                String grammNeu = temp.getErg();
+                Double grammNeu = temp.erg;
                 //TODO: Speichern soll in die ResultActivity durchgeführt werden
-                if(!grammNeu.isEmpty()){
-                    new SpeichernTask().execute(new Eintrag(grammAlt.getText().toString(), portionAlt.getText().toString(),
-                        portionNeu.getText().toString(), grammNeu));
-                }
+
+                    new SpeichernTask().execute(new Eintrag(
+                            Double.parseDouble(grammAlt.getText().toString()),
+                            Double.parseDouble(portionAlt.getText().toString()),
+                            Double.parseDouble(portionNeu.getText().toString()),
+                            grammNeu));
+
 
             } else {
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
@@ -93,6 +98,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (view == hilfe) {
             Intent intentHelpPage = new Intent(this, Help_page.class);
             startActivity(intentHelpPage);
+        }else if(view == anzeigen){
+            Intent intentAnzeigen = new Intent(this, AuflistungActivity.class);
+            startActivity(intentAnzeigen);
+
         } else {
             Toast.makeText(getApplicationContext(), "Fehler, bitte neu starten!", Toast.LENGTH_SHORT).show();
         }

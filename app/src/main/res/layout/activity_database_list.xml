@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Database_List">
+    tools:context=".AuflistungActivity">
 
     <TextView
         android:id="@+id/list_item_eintrag"

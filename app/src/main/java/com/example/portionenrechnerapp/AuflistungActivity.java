@@ -16,7 +16,6 @@ public class AuflistungActivity extends AppCompatActivity implements View.OnClic
     private EintragDao dao;
     private RecyclerView recyclerView;
     private EintragListAdapter adapter;
-    Button buttonZeigeListe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +28,12 @@ public class AuflistungActivity extends AppCompatActivity implements View.OnClic
         recyclerView.setAdapter(adapter);
 
         dao = EintragDatabase.getDatabase(this).eintragDao();
-        buttonZeigeListe = findViewById(R.id.button_anzeigen);
-        buttonZeigeListe.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view){
-        if(view == buttonZeigeListe){
-            Intent intent_anzeigen = new Intent(this, AuflistungActivity.class);
-            startActivity(intent_anzeigen);
-        }
+
     }
     @Override
     protected void onResume() {
