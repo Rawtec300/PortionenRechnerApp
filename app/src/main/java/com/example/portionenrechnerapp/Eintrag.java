@@ -47,4 +47,8 @@ public class Eintrag {
     public double getPortionenNeu() {
         return this.portionenAlt;
     }
+
+    public String getEintrag(){
+        return "(" + getGrammAlt() + "/" + getPortionenAlt() + ") * " + getPortionenNeu() + " = " + getGrammNeu();
+    }
 }

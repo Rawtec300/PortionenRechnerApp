@@ -33,10 +33,11 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         TextView eintragView = holder.itemView.findViewById(R.id.list_item_eintrag);
 
-        eintragView.setText(String.valueOf(eintraege.get(position).getGrammAlt()));
+        /*eintragView.setText(String.valueOf(eintraege.get(position).getGrammAlt()));
         eintragView.setText(String.valueOf(eintraege.get(position).getPortionenAlt()));
         eintragView.setText(String.valueOf(eintraege.get(position).getPortionenNeu()));
-        eintragView.setText(String.valueOf(eintraege.get(position).getGrammNeu()));
+        eintragView.setText(String.valueOf(eintraege.get(position).getGrammNeu()));*/
+        eintragView.setText(eintraege.get(position).getEintrag());
     }
 
     @Override
