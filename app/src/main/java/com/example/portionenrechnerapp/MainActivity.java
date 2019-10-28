@@ -101,17 +101,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(getApplicationContext(), "Fehler, bitte neu starten!", Toast.LENGTH_SHORT).show();
         }
     }
-
-    public EditText getGrammAlt() {
-        return grammAlt;
-    }
-
-    public EditText getPortionAlt() {
-        return portionAlt;
-    }
-
-    public EditText getPortionNeu() {
-        return portionNeu;
-    }
-
 }
