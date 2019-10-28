@@ -1,5 +1,6 @@
 package com.example.portionenrechnerapp;
 
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -16,9 +17,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Eintrag> eintraege = Collections.emptyList();
-    EintragListAdapter(){
+    private EintragDao dao;
 
+    private List<Eintrag> eintraege = Collections.emptyList();
+    EintragListAdapter(EintragDao dao){
+        this.dao = dao;
     }
 
     @NonNull
@@ -32,12 +35,11 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         TextView eintragView = holder.itemView.findViewById(R.id.list_item_eintrag);
-
-        /*eintragView.setText(String.valueOf(eintraege.get(position).getGrammAlt()));
-        eintragView.setText(String.valueOf(eintraege.get(position).getPortionenAlt()));
-        eintragView.setText(String.valueOf(eintraege.get(position).getPortionenNeu()));
-        eintragView.setText(String.valueOf(eintraege.get(position).getGrammNeu()));*/
         eintragView.setText(eintraege.get(position).getEintrag());
+
+        holder.itemView.setOnClickListener((view) -> {
+            new DeleteEintragTask().execute(eintraege.get(position));
+        });
     }
 
     @Override
@@ -54,6 +56,21 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         public EintragViewHolder(@NonNull View itemView){
             super(itemView);
+        }
+    }
+
+    class DeleteEintragTask extends AsyncTask<Eintrag, Void, List<Eintrag>>{
+
+        @Override
+        protected List<Eintrag> doInBackground(Eintrag... eintraege) {
+            dao.delete(eintraege[0]);
+            return dao.getAll();
+        }
+
+        @Override
+        protected void onPostExecute(List<Eintrag> eintraege){
+            super.onPostExecute(eintraege);
+            setEintraege(eintraege);
         }
     }
 

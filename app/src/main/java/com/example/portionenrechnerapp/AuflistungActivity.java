@@ -23,7 +23,7 @@ public class AuflistungActivity extends AppCompatActivity implements View.OnClic
 
         RecyclerView recyclerView = findViewById(R.id.eintraege_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new EintragListAdapter();
+        adapter = new EintragListAdapter(dao);
         recyclerView.setAdapter(adapter);
 
         dao = EintragDatabase.getDatabase(this).eintragDao();
