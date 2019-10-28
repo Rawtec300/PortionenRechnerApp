@@ -14,7 +14,6 @@ import java.util.List;
 
 public class AuflistungActivity extends AppCompatActivity implements View.OnClickListener {
     private EintragDao dao;
-    private RecyclerView recyclerView;
     private EintragListAdapter adapter;
 
     @Override
@@ -22,7 +21,7 @@ public class AuflistungActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database_list);
 
-        recyclerView = findViewById(R.id.eintraege_recycler);
+        RecyclerView recyclerView = findViewById(R.id.eintraege_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new EintragListAdapter();
         recyclerView.setAdapter(adapter);
