@@ -68,34 +68,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        String s = ".";
+        //Welcher Button wurde gedrückt
         if (view == berechne) {
-            //Prüfen ob alle Textfelder ausgefüllt sind
+            //Abfangen, dass nicht durch 0 geteilt wird
             if (!portionAlt.getText().toString().isEmpty() && Integer.parseInt(portionAlt.getText().toString()) == 0) {
                 Toast.makeText(getApplicationContext(), "Die alte Portionenanzahl darf nicht 0 sein!", Toast.LENGTH_SHORT).show();
-
+                //Prüfen ob alle Felder ausgefüllt sind
             } else if (!(grammAlt.getText().toString().isEmpty() ||
                     portionAlt.getText().toString().isEmpty() ||
                     portionNeu.getText().toString().isEmpty())) {
+                //Eingabe nur eines "," abfangen
                 if (grammAlt.getText().charAt(0) != '.') {
-
                     Intent intentBerechne = new Intent(this, ResultActivity.class);
                     intentBerechne.putExtra("portionen_neu_zu_berechne", portionNeu.getText().toString());
                     intentBerechne.putExtra("portionen_alt_zu_berechne", portionAlt.getText().toString());
                     intentBerechne.putExtra("gramm_alt_zu_berechne", grammAlt.getText().toString());
                     startActivity(intentBerechne);
-                    ResultActivity temp = new ResultActivity();
-                    Double grammNeu = temp.erg;
-              /*  //TODO: Speichern soll in die ResultActivity durchgeführt werden
-
-                    new SpeichernTask().execute(new Eintrag(
-                            Double.parseDouble(grammAlt.getText().toString()),
-                            Double.parseDouble(portionAlt.getText().toString()),
-                            Double.parseDouble(portionNeu.getText().toString()),
-                            grammNeu));
-
-*/
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Geben Sie bitte bei der ursprünglichen Grammzahl einen korrekten Wert ein", Toast.LENGTH_LONG).show();
                 }
             } else {
