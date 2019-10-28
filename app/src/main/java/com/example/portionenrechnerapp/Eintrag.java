@@ -45,7 +45,7 @@ public class Eintrag {
 
 
     public double getPortionenNeu() {
-        return this.portionenAlt;
+        return this.portionenNeu;
     }
 
     public String getEintrag(){

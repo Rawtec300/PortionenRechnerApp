@@ -23,14 +23,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText portionAlt;
     EditText portionNeu;
 
-    private EintragDao dao;
+   // private EintragDao dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dao = EintragDatabase.getDatabase(this).eintragDao();
+       // dao = EintragDatabase.getDatabase(this).eintragDao();
 
         berechne = findViewById(R.id.button_berechne);
         hilfe = findViewById(R.id.button_hilfe);
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentBerechne);
                 ResultActivity temp = new ResultActivity();
                 Double grammNeu = temp.erg;
-                //TODO: Speichern soll in die ResultActivity durchgeführt werden
+              /*  //TODO: Speichern soll in die ResultActivity durchgeführt werden
 
                     new SpeichernTask().execute(new Eintrag(
                             Double.parseDouble(grammAlt.getText().toString()),
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Double.parseDouble(portionNeu.getText().toString()),
                             grammNeu));
 
-
+*/
             } else {
                 Toast.makeText(getApplicationContext(), "Bitte geben Sie alle Werte ein!", Toast.LENGTH_SHORT).show();
             }
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return portionNeu;
     }
 
-
+/*
     class SpeichernTask extends AsyncTask<Eintrag, Void, Void> {
 
         @Override
@@ -133,5 +133,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.onPostExecute(aVoid);
         }
 
-    }
+    } */
 }
