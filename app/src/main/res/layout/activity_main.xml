@@ -87,10 +87,25 @@
         android:layout_height="wrap_content"
         android:text="@string/berechne" />
 
-    <Button
-        android:id="@+id/button_hilfe"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hilfe" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_verlauf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/verlauf" />
+
+        <Button
+            android:id="@+id/button_hilfe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hilfe" />
+
+    </LinearLayout>
 
 </LinearLayout>

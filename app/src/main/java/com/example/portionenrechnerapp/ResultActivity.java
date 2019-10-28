@@ -37,6 +37,9 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         String ergString = String.valueOf(erg);
 
         ergView.setText("Sie benötigen für " + portionNeuString + " Portionen " + ergString + " Gramm.");
+
+        // TODO: 28.10.2019 Auf Datenbank speichern
+
     }
 
     @Override

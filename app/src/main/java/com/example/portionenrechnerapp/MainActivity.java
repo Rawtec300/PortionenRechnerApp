@@ -17,6 +17,7 @@ import android.widget.ViewSwitcher;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button berechne;
     Button hilfe;
+    Button verlauf;
     EditText grammAlt;
     EditText portionAlt;
     EditText portionNeu;
@@ -28,12 +29,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         berechne = findViewById(R.id.button_berechne);
         hilfe = findViewById(R.id.button_hilfe);
+        verlauf = findViewById(R.id.button_verlauf);
 
         grammAlt = findViewById(R.id.word_edit_gramm_alt);
         portionAlt = findViewById(R.id.word_edit_portionen_alt);
         portionNeu = findViewById(R.id.word_edit_portionen_neu);
         berechne.setOnClickListener(this);
         hilfe.setOnClickListener(this);
+        verlauf.setOnClickListener(this);
     }
 
     @Override
@@ -80,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (view == hilfe) {
             Intent intentHelpPage = new Intent(this, Help_page.class);
             startActivity(intentHelpPage);
+        } if (view == verlauf){
+            Intent intentVerlauf = new Intent(this, VerlaufActivity.class);
+            startActivity(intentVerlauf);
         } else {
             Toast.makeText(getApplicationContext(), "Fehler, bitte neu starten!", Toast.LENGTH_SHORT).show();
         }
