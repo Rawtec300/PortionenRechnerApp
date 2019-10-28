@@ -25,7 +25,7 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.activity_database_list, parent, false);
+                inflate(R.layout.eintrag_list_item, parent, false);
         return new EintragViewHolder(view);
     }
 
