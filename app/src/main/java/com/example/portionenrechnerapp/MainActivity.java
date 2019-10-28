@@ -23,14 +23,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText portionAlt;
     EditText portionNeu;
 
-    // private EintragDao dao;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // dao = EintragDatabase.getDatabase(this).eintragDao();
 
         berechne = findViewById(R.id.button_berechne);
         hilfe = findViewById(R.id.button_hilfe);
