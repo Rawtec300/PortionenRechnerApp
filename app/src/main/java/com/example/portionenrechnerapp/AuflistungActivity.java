@@ -1,10 +1,9 @@
 package com.example.portionenrechnerapp;
 
-import android.content.Intent;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,20 +36,25 @@ public class AuflistungActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
-        new LadeEintraegeTask().execute();
+        new LadeEintraegeTask(dao, adapter).execute();
     }
 
-    public class LadeEintraegeTask extends AsyncTask<View, View, List<Eintrag>> {
+    static class LadeEintraegeTask extends AsyncTask<Void, Void, List<Eintrag>> {
+
+       private final EintragDao dao;
+       private final EintragListAdapter adapter;
+
+       public LadeEintraegeTask(EintragDao dao, EintragListAdapter adapter){
+           this.dao = dao;
+           this.adapter = adapter;
+       }
 
         @Override
-        protected List<Eintrag> doInBackground(View... views) {
+        protected List<Eintrag> doInBackground(Void... voids) {
             return dao.getAll();
         }
 
-        @Override
-        protected void onPostExecute(List<Eintrag> eintraege) {
-            super.onPostExecute(eintraege);
-            adapter.setEintraege(eintraege);
-        }
+
     }
+
 }

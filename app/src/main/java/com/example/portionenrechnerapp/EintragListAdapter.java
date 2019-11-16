@@ -17,10 +17,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private EintragDao dao;
 
     private List<Eintrag> eintraege = Collections.emptyList();
-    EintragListAdapter(EintragDao dao){
+    private final EintragDao dao;
+    public EintragListAdapter(EintragDao dao){
         this.dao = dao;
     }
 
@@ -37,8 +37,12 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView eintragView = holder.itemView.findViewById(R.id.list_item_eintrag);
         eintragView.setText(eintraege.get(position).getEintrag());
 
+        eintragView.setOnClickListener((view) -> {
+            new DeleteEintragTask(dao, this).execute(eintraege.get(position));
+        });
+
         holder.itemView.setOnClickListener((view) -> {
-            new DeleteEintragTask().execute(eintraege.get(position));
+            new DeleteEintragTask(dao, this).execute(eintraege.get(position));
         });
     }
 
@@ -59,7 +63,15 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    class DeleteEintragTask extends AsyncTask<Eintrag, Void, List<Eintrag>>{
+    static class DeleteEintragTask extends AsyncTask<Eintrag, Void, List<Eintrag>> {
+
+        private final EintragDao dao;
+        private final EintragListAdapter adapter;
+
+        public DeleteEintragTask(EintragDao dao, EintragListAdapter adapter) {
+            this.dao = dao;
+            this.adapter = adapter;
+        }
 
         @Override
         protected List<Eintrag> doInBackground(Eintrag... eintraege) {
@@ -68,9 +80,9 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
         @Override
-        protected void onPostExecute(List<Eintrag> eintraege){
-            super.onPostExecute(eintraege);
-            setEintraege(eintraege);
+        protected void onPostExecute(List<Eintrag> words) {
+            super.onPostExecute(words);
+            adapter.setEintraege(words);
         }
     }
 
