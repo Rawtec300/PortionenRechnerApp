@@ -9,10 +9,10 @@ public class Eintrag {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    public double grammAlt;
-    public double grammNeu;
-    public double portionenAlt;
-    public double portionenNeu;
+    private double grammAlt;
+    private double grammNeu;
+    private double portionenAlt;
+    private double portionenNeu;
 
     public Eintrag(double grammAlt, double portionenAlt, double portionenNeu, double grammNeu) {
         this.grammAlt = grammAlt;
@@ -48,7 +48,24 @@ public class Eintrag {
         return this.portionenNeu;
     }
 
-    public String getEintrag(){
-        return "(" + getGrammAlt() + "/" + getPortionenAlt() + ") * " + getPortionenNeu() + " = " + getGrammNeu();
+
+    public String getGrammAltString() {
+        String grammAltString = Double.toString(this.grammAlt);
+        return grammAltString;
+    }
+
+    public String getGrammNeuString() {
+        String grammNeuString = Double.toString(this.grammNeu);
+        return grammNeuString;
+    }
+
+    public String getPortionenAltString() {
+        String portionenAltString = Double.toString(this.portionenAlt);
+        return portionenAltString;
+    }
+
+    public String getPortionenNeuString() {
+        String portionenNeuString = Double.toString(this.portionenNeu);
+        return portionenNeuString;
     }
 }

@@ -17,4 +17,10 @@
     <string name="zurueck">Zurück</string>
     <string name="sie_benoetigen_fuer_x_portionen_x_gramm">Sie benötigen für x Portionen x Gramm.</string>
     <string name="verlauf">Verlauf</string>
+    <string name="urspruengliche_grammzahl">Ursprüngliche Grammzahl:</string>
+    <string name="urspruengliche_portionen">Ursprüngliche Portionen:</string>
+    <string name="neue_portionen">Neue Portionen:</string>
+    <string name="neue_grammzahl">Neue Grammzahl:</string>
+    <string name="verlauf_doppelpunkt"><font size="20">Verlauf:</font></string>
+    <string name="eintrag_loeschen">Eintrag löschen</string>
 </resources>
