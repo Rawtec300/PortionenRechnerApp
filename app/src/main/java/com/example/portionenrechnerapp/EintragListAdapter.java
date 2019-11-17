@@ -39,13 +39,13 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Button loesche = holder.itemView.findViewById(R.id.button_loeschen);
+        Button loescheButton = holder.itemView.findViewById(R.id.button_loeschen);
         TextView eintragView = holder.itemView.findViewById(R.id.list_item_eintrag);
         //TextView altGramm = holder.itemView.findViewById(R.id.rv_alte_grammzahl);
         eintragView.setText(eintraege.get(position).getEintrag());
         //altGramm.setText(eintraege.get(position));
 
-        holder.itemView.setOnClickListener((view) -> {
+        loescheButton.setOnClickListener( event -> {
             new DeleteEintragTask(eintragDao, this).execute(eintraege.get(position));
         });
     }
@@ -72,8 +72,8 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         @Override
         protected List<Eintrag> doInBackground(Eintrag... eintraege) {
-            Eintrag eintragLöschen = eintraege[0];
-            eintragDao.delete(eintragLöschen);
+            Eintrag eintragLoeschen = eintraege[0];
+            eintragDao.delete(eintragLoeschen);
             return eintragDao.getAll();
         }
 

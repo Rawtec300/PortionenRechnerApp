@@ -9,11 +9,6 @@ import androidx.room.RoomDatabase;
 @Database(entities = {Eintrag.class}, version = 1, exportSchema = false)
 public abstract class EintragDatabase extends RoomDatabase {
 
-    @Override
-    public void clearAllTables() {
-
-    }
-
     public abstract EintragDao eintragDao();
 
     private static EintragDatabase INSTANCE;
