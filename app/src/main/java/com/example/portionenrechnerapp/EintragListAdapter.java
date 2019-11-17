@@ -17,11 +17,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private EintragDao dao;
 
     private List<Eintrag> eintraege = Collections.emptyList();
-    EintragListAdapter(EintragDao dao){
-        this.dao = dao;
+    private final EintragDao eintragDao;
+
+    EintragListAdapter(EintragDao eintragDao){
+        this.eintragDao = eintragDao;
     }
 
     @NonNull
@@ -38,7 +39,7 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         eintragView.setText(eintraege.get(position).getEintrag());
 
         holder.itemView.setOnClickListener((view) -> {
-            new DeleteEintragTask().execute(eintraege.get(position));
+            new DeleteEintragTask(eintragDao, this).execute(eintraege.get(position));
         });
     }
 
@@ -47,30 +48,32 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return eintraege.size();
     }
 
-    public void setEintraege(List<Eintrag> eintraege){
+    void setEintraege(List<Eintrag> eintraege){
         this.eintraege = eintraege;
         notifyDataSetChanged();
     }
 
-    public class EintragViewHolder extends RecyclerView.ViewHolder {
+    static class DeleteEintragTask extends AsyncTask<Eintrag, Void, List<Eintrag>>{
 
-        public EintragViewHolder(@NonNull View itemView){
-            super(itemView);
+        private final EintragDao eintragDao;
+        private EintragListAdapter eintragListAdapter;
+
+        DeleteEintragTask(EintragDao eintragDao, EintragListAdapter eintragListAdapter){
+            this.eintragDao = eintragDao;
+            this.eintragListAdapter = eintragListAdapter;
         }
-    }
-
-    class DeleteEintragTask extends AsyncTask<Eintrag, Void, List<Eintrag>>{
 
         @Override
         protected List<Eintrag> doInBackground(Eintrag... eintraege) {
-            dao.delete(eintraege[0]);
-            return dao.getAll();
+            Eintrag eintragLöschen = eintraege[0];
+            eintragDao.delete(eintragLöschen);
+            return eintragDao.getAll();
         }
 
         @Override
         protected void onPostExecute(List<Eintrag> eintraege){
             super.onPostExecute(eintraege);
-            setEintraege(eintraege);
+            eintragListAdapter.setEintraege(eintraege);
         }
     }
 
