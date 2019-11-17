@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class AuflistungActivity extends AppCompatActivity implements View.OnClickListener {
-    private EintragDao dao;
+    private RecyclerView EintragRecyclerView;
     private EintragListAdapter adapter;
 
     @Override
@@ -21,13 +21,10 @@ public class AuflistungActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database_list);
 
-        RecyclerView recyclerView = findViewById(R.id.eintraege_recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new EintragListAdapter(dao);
-        recyclerView.setAdapter(adapter);
-
-        dao = EintragDatabase.getDatabase(this).eintragDao();
-
+        EintragRecyclerView = findViewById(R.id.eintraege_recycler);
+        EintragRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new EintragListAdapter(EintragDatabase.getDatabase(this).eintragDao());
+        EintragRecyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -37,14 +34,22 @@ public class AuflistungActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
-        new LadeEintraegeTask().execute();
+        new LadeEintraegeTask(EintragDatabase.getDatabase(this).eintragDao(), adapter).execute();
     }
 
-    public class LadeEintraegeTask extends AsyncTask<View, View, List<Eintrag>> {
+    public class LadeEintraegeTask extends AsyncTask<Void, Void, List<Eintrag>> {
+
+        private EintragDao eintragDao;
+        private EintragListAdapter adapter;
+
+        LadeEintraegeTask(EintragDao eintragDao, EintragListAdapter adapter){
+            this.eintragDao = eintragDao;
+            this.adapter = adapter;
+        }
 
         @Override
-        protected List<Eintrag> doInBackground(View... views) {
-            return dao.getAll();
+        protected List<Eintrag> doInBackground(Void... voids) {
+            return eintragDao.getAll();
         }
 
         @Override

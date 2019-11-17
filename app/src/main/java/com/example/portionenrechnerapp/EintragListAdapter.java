@@ -1,6 +1,7 @@
 package com.example.portionenrechnerapp;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,12 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Collections;
 import java.util.List;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
+
 public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private EintragDao dao;
 
     private List<Eintrag> eintraege = Collections.emptyList();
-    EintragListAdapter(EintragDao dao){
-        this.dao = dao;
+    private final EintragDao eintragDao;
+
+    EintragListAdapter(EintragDao eintragDao){
+        this.eintragDao = eintragDao;
     }
 
     @NonNull
@@ -34,11 +39,14 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Button loescheButton = holder.itemView.findViewById(R.id.button_loeschen);
         TextView eintragView = holder.itemView.findViewById(R.id.list_item_eintrag);
+        //TextView altGramm = holder.itemView.findViewById(R.id.rv_alte_grammzahl);
         eintragView.setText(eintraege.get(position).getEintrag());
+        //altGramm.setText(eintraege.get(position));
 
-        holder.itemView.setOnClickListener((view) -> {
-            new DeleteEintragTask().execute(eintraege.get(position));
+        loescheButton.setOnClickListener( event -> {
+            new DeleteEintragTask(eintragDao, this).execute(eintraege.get(position));
         });
     }
 
@@ -47,30 +55,32 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return eintraege.size();
     }
 
-    public void setEintraege(List<Eintrag> eintraege){
+    void setEintraege(List<Eintrag> eintraege){
         this.eintraege = eintraege;
         notifyDataSetChanged();
     }
 
-    public class EintragViewHolder extends RecyclerView.ViewHolder {
+    static class DeleteEintragTask extends AsyncTask<Eintrag, Void, List<Eintrag>>{
 
-        public EintragViewHolder(@NonNull View itemView){
-            super(itemView);
+        private final EintragDao eintragDao;
+        private EintragListAdapter eintragListAdapter;
+
+        DeleteEintragTask(EintragDao eintragDao, EintragListAdapter eintragListAdapter){
+            this.eintragDao = eintragDao;
+            this.eintragListAdapter = eintragListAdapter;
         }
-    }
-
-    class DeleteEintragTask extends AsyncTask<Eintrag, Void, List<Eintrag>>{
 
         @Override
         protected List<Eintrag> doInBackground(Eintrag... eintraege) {
-            dao.delete(eintraege[0]);
-            return dao.getAll();
+            Eintrag eintragLoeschen = eintraege[0];
+            eintragDao.delete(eintragLoeschen);
+            return eintragDao.getAll();
         }
 
         @Override
         protected void onPostExecute(List<Eintrag> eintraege){
             super.onPostExecute(eintraege);
-            setEintraege(eintraege);
+            eintragListAdapter.setEintraege(eintraege);
         }
     }
 
