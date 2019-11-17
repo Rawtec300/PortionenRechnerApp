@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class AuflistungActivity extends AppCompatActivity implements View.OnClickListener {
-    private RecyclerView EintragRecyclerView;
     private EintragListAdapter adapter;
 
     @Override
@@ -21,10 +20,10 @@ public class AuflistungActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database_list);
 
-        EintragRecyclerView = findViewById(R.id.eintraege_recycler);
-        EintragRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView eintragRecyclerView = findViewById(R.id.eintraege_recycler);
+        eintragRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new EintragListAdapter(EintragDatabase.getDatabase(this).eintragDao());
-        EintragRecyclerView.setAdapter(adapter);
+        eintragRecyclerView.setAdapter(adapter);
     }
 
     @Override

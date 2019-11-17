@@ -40,14 +40,17 @@ public class EintragListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Button loescheButton = holder.itemView.findViewById(R.id.button_loeschen);
-        TextView eintragView = holder.itemView.findViewById(R.id.list_item_eintrag);
-        //TextView altGramm = holder.itemView.findViewById(R.id.rv_alte_grammzahl);
-        eintragView.setText(eintraege.get(position).getEintrag());
-        //altGramm.setText(eintraege.get(position));
+        TextView altPortionen = holder.itemView.findViewById(R.id.rv_alte_portionen_anzeige);
+        TextView altGramm = holder.itemView.findViewById(R.id.rv_alte_grammzahl_anzeige);
+        TextView neuePortionen = holder.itemView.findViewById(R.id.rv_neue_portionen_anzeige);
+        TextView neueGramm = holder.itemView.findViewById(R.id.rv_neue_grammzahl_anzeige);
 
-        loescheButton.setOnClickListener( event -> {
-            new DeleteEintragTask(eintragDao, this).execute(eintraege.get(position));
-        });
+        altPortionen.setText(eintraege.get(position).getPortionenAltString());
+        altGramm.setText(eintraege.get(position).getGrammAltString());
+        neuePortionen.setText(eintraege.get(position).getPortionenNeuString());
+        neueGramm.setText(eintraege.get(position).getGrammNeuString());
+
+        loescheButton.setOnClickListener( event -> new DeleteEintragTask(eintragDao, this).execute(eintraege.get(position)));
     }
 
     @Override
